@@ -13,6 +13,8 @@ class Board
   end
 
   def register_shot at_coordinate
+    
+
     # a, b, c, d, e, f, g, h, i, j = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
     # array, split, get index of array.
     # x = x_randomiser
@@ -23,7 +25,7 @@ class Board
 
     place_selected = @board[y][x]
     if
-    place_selected.sub!(' ','')
+    place_selected.sub!(' ','x')
     end
   end
 

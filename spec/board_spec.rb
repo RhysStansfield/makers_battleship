@@ -54,6 +54,8 @@ let(:board) { Board.new player }
     end
 
     it "changes 's' to recieve a hit" do
+      board.stub!(:y_randomiser).and_return(5)
+      board.stub!(:x_randomiser).and_return(4)
       expect(board.rows[4][5]).to recieve(:hit!)
     end
 
@@ -61,8 +63,7 @@ let(:board) { Board.new player }
       board.stub!(:y_randomiser).and_return(5)
       board.stub!(:x_randomiser).and_return(4)
       expect(board.rows[4][5]).to eq 's'
-      board.stub!(:at_coordinate).and_return("F5")
-      board.register_shot at_coordinate
+      board.register_shot 'F5'
       expect(board.rows[4][5]).to eq 'x'
     end
   end
