@@ -72,7 +72,28 @@ let(:board) { Board.new player }
       expect(board.board_layout[5][4]).to eq 'x'
     end
 
-    it "" do
+    it "can recognise a double digit x co-ordinate" do
+      board.register_shot 'A10'
+      expect(board.board_layout[0][9]).to eq 'o'
+    end
+
+    it "turns all 's' values into ' ' values" do
+      board.final_board
+      # expect(board.opponent_view.flatten).to eq Array.new(100,' ')
+      expect(board.opponent_view.flatten.all?{|n| n==' '}).to be_true
+    end
+
+    it "hits remain intact on the opponent's view" do
+      board.stub(:y_randomiser).and_return(6)
+      board.stub(:x_randomiser).and_return(3)
+      board.place_selector
+      board.register_shot 'G4'
+      expect(board.opponent_view[6][3]).to eq 'x'
+    end
+
+    it "misses remain intact on the opponent's view" do
+      board.register_shot 'G4'
+      expect(board.opponent_view[6][3]).to eq 'o'
     end
   end
 end
