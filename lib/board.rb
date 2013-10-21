@@ -58,12 +58,6 @@ class Board
     board_layout
   end
 
-  def map(&block)
-    out = []
-    self.each{|e| out << block.call(e)}
-    return out
-  end
-
   def opponent_view
     board_layout.map do |array|
       array.map do |item|
