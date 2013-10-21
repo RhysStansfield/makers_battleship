@@ -46,7 +46,7 @@ let(:board) { Board.new player }
     end
 
     it "changes ' ' to 'o'" do
-      
+      expect()
     end
 
     it "changes ' ' to 'o' if user misses" do
