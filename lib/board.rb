@@ -14,8 +14,12 @@ class Board
 
   def register_shot at_coordinate
     # a, b, c, d, e, f, g, h, i, j = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # array, split, get index of array.
     # x = x_randomiser
     # y = y_randomiser
+    # split the input into y and x 
+    # change the number into to_i - 1
+
 
     place_selected = @board[y][x]
     if
