@@ -11,6 +11,8 @@ class Board
   end
 
   def rows
+    puts
+    Array.new(10, Array.new(10,' '))
   end
 
   def opponent view
