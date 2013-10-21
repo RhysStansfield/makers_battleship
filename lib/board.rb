@@ -61,7 +61,7 @@ class Board
   end
 
   def rows
-    
+    board_layout
   end
 
   def opponent_view
