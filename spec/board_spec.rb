@@ -71,5 +71,8 @@ let(:board) { Board.new player }
       board.register_shot 'F5'
       expect(board.board_layout[5][4]).to eq 'x'
     end
+
+    it "" do
+    end
   end
 end

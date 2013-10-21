@@ -16,7 +16,11 @@ class Board
     y_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
     array = at_coordinate.scan(/./) #takes a string past to it and chops it up into little bits everytime it hits a certain marker . means any character
-    x = array[1].to_i - 1
+    if array.length == 3
+      x = 9
+    else
+      x = array[1].to_i - 1
+    end
     y = y_letter.index(array[0])
     
     if board_layout[y][x] == 's'
@@ -24,7 +28,6 @@ class Board
     else
       miss! y, x
     end
-      
   end
 
   def board_creator
