@@ -1,6 +1,6 @@
 require 'player'
 
 describe Player do
-  it '' do
+  it 'cockadoodledo' do
   end
 end

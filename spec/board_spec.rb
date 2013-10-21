@@ -19,15 +19,46 @@ let(:board) { Board.new player }
     end
 
     it 'randomises a number' do
-      expect(board.ship_randomiser).to be >= 0
-      expect(board.ship_randomiser).to be <= 9
+      expect(board.x_randomiser).to be >= 0
+      expect(board.x_randomiser).to be <= 9
+      expect(board.y_randomiser).to be >= 0
+      expect(board.y_randomiser).to be <= 9
     end
 
     it "returns selected place as 's'" do
-      board.stub(:ship_randomiser).and_return(5)
-      expect(board.board_place_selector).to eq 's'
+      board.stub(:y_randomiser).and_return(5)
+      board.stub(:x_randomiser).and_return(5)
+      expect(board.place_selector).to eq 's'
     end
 
+    it "inserts an 's' permanently into selected place" do
+      board.stub(:y_randomiser).and_return(2)
+      board.stub(:x_randomiser).and_return(5)
+      board.place_selector
+      expect(board.board[2][5]).to eq 's'
+    end
+
+      it "does not insert an 's' permanently into selected place" do
+      board.stub(:y_randomiser).and_return(1)
+      board.stub(:x_randomiser).and_return(1)
+      board.place_selector
+      expect(board.board[1][0]).not_to eq 's'
+    end
+
+    it "changes ' ' to 'o'" do
+      
+    end
+
+    it "changes ' ' to 'o' if user misses" do
+
+    end
+
+    it "changes 's' to 'x'" do
+
+    end
+
+    it "changes 's' to 'x' when a ship is hit" do
+
+    end
   end
-	
 end

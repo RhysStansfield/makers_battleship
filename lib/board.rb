@@ -8,8 +8,18 @@ class Board
     @player.name
   end
 
-  def register_shot at_coordinate
+  def board
+    @board
+  end
 
+  def register_shot at_coordinate
+    # x = x_randomiser
+    # y = y_randomiser
+
+    place_selected = @board[y][x]
+    if
+    place_selected.sub!(' ','')
+    end
   end
 
   # def board_randomiser
@@ -23,37 +33,28 @@ class Board
     Array.new(10){Array.new(10){' '}}
   end
 
-  def ship_randomiser
+  def x_randomiser
+    rand(10)
+  end
+
+  def y_randomiser
     rand(10)
   end
 
   def place_selector
-    x = ship_randomiser
-    y = ship_randomiser
+    x = x_randomiser
+    y = y_randomiser
 
     place_selected = @board[y][x]
-
-    # @board = @board.each do |array| 
-    #   if row_y == array
-    #     array.each do |place|
-    #       if array[x] == place
-    #         place.sub!(' ','s') if place == place_selected
-    #       end
-    #     end
-    #   end
-    # end
-
     place_selected.sub!(' ','s')
-
-    # puts @board
   end
 
-  def cock
-    board_creator.place_selector
+  def final_board
+    17.times { place_selector }
   end
 
   def rows
-    # Array.new(10, Array.new(10,' '))
+     final_board
   end
 
   def opponent_view
