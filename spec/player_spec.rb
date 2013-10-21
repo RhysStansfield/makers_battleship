@@ -1,5 +1,6 @@
 require 'player'
 
-Describe Player do
-  it ''
+describe Player do
+  it '' do
+  end
 end
