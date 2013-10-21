@@ -46,6 +46,10 @@ let(:board) { Board.new player }
     end
 
     it "changes ' ' to 'o'" do
+      board.stub(:y_randomiser).and_return(1)
+      board.stub(:x_randomiser).and_return(1)
+      board.place_selector
+      board.miss
       expect()
     end
 
