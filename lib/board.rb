@@ -15,7 +15,7 @@ class Board
   def register_shot at_coordinate
     y_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
-    array = at_coordinate.scan(/./)
+    array = at_coordinate.scan(/./) #takes a string past to it and chops it up into little bits everytime it hits a certain marker . means any character
     x = array[1].to_i - 1
     y = y_letter.index(array[0])
     
@@ -26,15 +26,6 @@ class Board
     end
       
   end
-
-
-
-  # def board_randomiser
-  #   x = rand(10)
-  #   y = rand(10)
-  # end
-
-  # a, b, c, d, e, f, g, h, i, j = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
   def board_creator
     Array.new(10){Array.new(10){' '}}
