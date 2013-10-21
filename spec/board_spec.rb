@@ -46,28 +46,32 @@ let(:board) { Board.new player }
     end
 
     it "board can receive miss" do
-      expect(board.rows[1][1]).to receive(:miss)
+      board.stub(:x_randomiser).and_return(5)
+      board.stub(:y_randomiser).and_return(4)
+      board.place_selector
+      board.register_shot 'B2'
+      expect(board.board[1][1]).to receive(:miss!)
     end
 
     it "changes ' ' to 'o' if user misses" do
       board.register_shot 'B2'
-      expect(board.rows[1][1]).to eq 'o'
+      expect(board.board[1][1]).to eq 'o'
     end
 
     it "board receives a hit" do
       board.stub(:y_randomiser).and_return(1)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
-      expect(board.rows[4][5]).to receive(:hit!)
+      expect(board.board[4][5]).to receive(:hit!)
     end
 
     it "changes 's' to 'x' when a ship is hit" do
       board.stub!(:y_randomiser).and_return(5)
       board.stub!(:x_randomiser).and_return(4)
       board.place_selector
-      expect(board.rows[4][5]).to eq 's'
+      expect(board.board[4][5]).to eq 's'
       board.register_shot 'F5'
-      expect(board.rows[4][5]).to eq 'x'
+      expect(board.board[4][5]).to eq 'x'
     end
   end
 end

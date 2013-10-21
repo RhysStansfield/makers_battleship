@@ -7,4 +7,5 @@ class Player
 
   def shoot(at_coordinates, opponent_board)
   end
+
 end

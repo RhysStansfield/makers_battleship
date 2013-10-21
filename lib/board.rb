@@ -63,9 +63,13 @@ class Board
   end
 
   def rows
-     # final_board
+    
   end
 
   def opponent_view
+  end
+
+  def miss! x, y
+    @board[x][y] = 'o'
   end
 end
