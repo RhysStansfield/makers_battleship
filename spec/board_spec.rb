@@ -53,12 +53,17 @@ let(:board) { Board.new player }
 
     end
 
-    it "changes 's' to 'x'" do
-
+    it "changes 's' to recieve a hit" do
+      expect(board.rows[4][5]).to recieve(:hit!)
     end
 
     it "changes 's' to 'x' when a ship is hit" do
-
+      board.stub!(:y_randomiser).and_return(5)
+      board.stub!(:x_randomiser).and_return(4)
+      expect(board.rows[4][5]).to eq 's'
+      board.stub!(:at_coordinate).and_return("F5")
+      board.register_shot at_coordinate
+      expect(board.rows[4][5]).to eq 'x'
     end
   end
 end
