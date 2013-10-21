@@ -35,43 +35,41 @@ let(:board) { Board.new player }
       board.stub(:y_randomiser).and_return(2)
       board.stub(:x_randomiser).and_return(5)
       board.place_selector
-      expect(board.board[2][5]).to eq 's'
+      expect(board.board_layout[2][5]).to eq 's'
     end
 
       it "does not insert an 's' permanently into selected place" do
       board.stub(:y_randomiser).and_return(1)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
-      expect(board.board[1][0]).not_to eq 's'
+      expect(board.board_layout[1][0]).not_to eq 's'
     end
 
     it "board can receive miss" do
-      board.stub(:x_randomiser).and_return(5)
-      board.stub(:y_randomiser).and_return(4)
-      board.place_selector
+      expect(board).to receive(:miss!)
       board.register_shot 'B2'
-      expect(board.board[1][1]).to receive(:miss!)
     end
 
     it "changes ' ' to 'o' if user misses" do
       board.register_shot 'B2'
-      expect(board.board[1][1]).to eq 'o'
+      expect(board.board_layout[1][1]).to eq 'o'
     end
 
     it "board receives a hit" do
-      board.stub(:y_randomiser).and_return(1)
+      board.stub(:y_randomiser).and_return(2)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
-      expect(board.board[4][5]).to receive(:hit!)
+      expect(board).to receive(:hit!)
+      board.register_shot 'C2'
     end
 
     it "changes 's' to 'x' when a ship is hit" do
-      board.stub!(:y_randomiser).and_return(5)
-      board.stub!(:x_randomiser).and_return(4)
+      board.stub(:y_randomiser).and_return(5)
+      board.stub(:x_randomiser).and_return(4)
       board.place_selector
-      expect(board.board[4][5]).to eq 's'
+      expect(board.board_layout[5][4]).to eq 's'
       board.register_shot 'F5'
-      expect(board.board[4][5]).to eq 'x'
+      expect(board.board_layout[5][4]).to eq 'x'
     end
   end
 end

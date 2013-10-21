@@ -8,20 +8,21 @@ class Board
     @player.name
   end
 
-  def board
+  def board_layout
     @board
   end
 
   def register_shot at_coordinate
+    y_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+
     array = at_coordinate.scan(/./)
     x = array[1].to_i - 1
     y = y_letter.index(array[0])
-    y_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     
-    if @board[x][y] == 's'
-      @board.hit! x, y
+    if board_layout[y][x] == 's'
+      hit! y, x
     else
-      @board.miss! x, y
+      miss! y, x
     end
       
   end
@@ -66,7 +67,11 @@ class Board
   def opponent_view
   end
 
-  def miss! x, y
-    @board[x][y] = 'o'
+  def hit! y, x
+    board_layout[y][x] = 'x'
+  end
+
+  def miss! y, x
+    board_layout[y][x] = 'o'
   end
 end
