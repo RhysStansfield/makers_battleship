@@ -1,5 +1,5 @@
 class Player
-  def  initalize name
+  def initalize name
   end
 
   def has_ships_still_floating?
