@@ -13,6 +13,6 @@ class Board
   def rows
   end
 
-  def opponent view
+  def opponent_view
   end
 end
