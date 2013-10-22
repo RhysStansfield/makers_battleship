@@ -22,7 +22,7 @@ class Board
       y = array[1].to_i - 1
     end
     x = x_letter.index(array[0])
-    shot = ' '
+    shot = ''
     if board_layout[y][x] == 's'
       shot = hit! y, x
     else
