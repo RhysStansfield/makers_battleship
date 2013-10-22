@@ -1,5 +1,13 @@
 module Utilities
 
+  def place_selector
+    x = x_randomiser
+    y = y_randomiser
+
+    place_selected = @board[y][x]
+    place_selected.sub!(' ','s')
+  end
+
   def test_board
     17.times { place_selector }
   end
@@ -8,5 +16,5 @@ module Utilities
     return ' ' if item == 's'
     item
   end
-  
+
 end

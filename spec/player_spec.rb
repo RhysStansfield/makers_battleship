@@ -22,10 +22,4 @@ describe Player do
     expect(player.has_ships_still_floating?).to be false
   end
 
-  # it "it says 'you sunk my battleship, bitch' if all ships are destroyed" do
-  #   board = Board.new player
-  #   player.stub(:board_array) { [[' ', ' ', 's']] }
-  #   board.register_shot 'A3'
-  #   expect(player.has_ships_still_floating?).to be false
-  # end
 end

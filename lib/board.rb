@@ -6,6 +6,8 @@ class Board
 
   include ChooseRandomly, Shooting, Utilities
 
+  attr_reader :ships, :placed_ships
+
   def initialize player
     @player = player
     @board = Array.new(10){Array.new(10){' '}}
@@ -26,12 +28,15 @@ class Board
     calculate_shot x, y
   end
 
-  def place_selector
-    x = x_randomiser
-    y = y_randomiser
+  def place_ships
+    create_ships
+    place = ShipPlacer.new ships, self
+    @placed_ships = place.ships
+  end
 
-    place_selected = @board[y][x]
-    place_selected.sub!(' ','s')
+  def create_ships
+    create = ShipCreator.new
+    @ships = create.ships
   end
 
   def opponent_view

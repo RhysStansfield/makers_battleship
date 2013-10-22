@@ -56,13 +56,4 @@ describe Ship do
     expect(ship.choose_initial_direction).to eq 1
   end
 
-  it "checks if there is enough space"
-
-  it "knows if there is a ship already in it's way"
-
-  it "if there is not enough space it randomly chooses another direction"
-
-  it "fills in determined space with 's'"
-
-
 end
