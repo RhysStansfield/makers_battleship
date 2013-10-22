@@ -1,4 +1,4 @@
- require 'board'
+require 'board'
 
 describe Board do
 let(:player) { double :player }
@@ -38,7 +38,7 @@ let(:board) { Board.new player }
       expect(board.board_layout[2][5]).to eq 's'
     end
 
-      it "does not insert an 's' permanently into selected place" do
+    it "does not insert an 's' permanently into selected place" do
       board.stub(:y_randomiser).and_return(1)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
