@@ -1,5 +1,3 @@
-require 'board'
-
 class Player
 
   def initialize name
@@ -8,12 +6,16 @@ class Player
     give_final_board
   end
 
+  def board_array
+    @board.board_layout
+  end
+
   def give_final_board
     @board.final_board
   end
 
   def has_ships_still_floating?
-    @board.board_layout.flatten.include?('s')
+    board_array.flatten.include?('s')
   end
 
   def shoot(at_coordinates, opponent_board)
