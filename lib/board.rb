@@ -13,21 +13,22 @@ class Board
   end
 
   def register_shot at_coordinate
-    y_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    x_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
     array = at_coordinate.scan(/./) #takes a string past to it and chops it up into little bits everytime it hits a certain marker . means any character
     if array.length == 3
-      x = 9
+      y = 9
     else
-      x = array[1].to_i - 1
+      y = array[1].to_i - 1
     end
-    y = y_letter.index(array[0])
-    
+    x = x_letter.index(array[0])
+    shot = ' '
     if board_layout[y][x] == 's'
-      hit! y, x
+      shot = hit! y, x
     else
-      miss! y, x
+      shot = miss! y, x
     end
+    shot.dup
   end
 
   def board_creator
@@ -73,4 +74,5 @@ class Board
   def miss! y, x
     board_layout[y][x] = 'o'
   end
+
 end

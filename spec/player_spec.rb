@@ -9,16 +9,16 @@ describe Player do
   end
 
   it 'receives a board populated with ships' do
-    expect(player.board_array.flatten).to include('s')
+    expect(player.board.flatten).to include('s')
   end
 
   it 'tells us if the ship is still floating' do
-    player.stub(:board_array) { [[' ', ' ', 's']]}
+    player.stub(:board) { [[' ', ' ', 's']]}
     expect(player.has_ships_still_floating?).to be true
   end
 
   it 'tells us if the player has no ships still floating' do
-    player.stub(:board_array) { [[' ', ' ', ' ']] }
+    player.stub(:board) { [[' ', ' ', ' ']] }
     expect(player.has_ships_still_floating?).to be false
   end
 

@@ -60,7 +60,7 @@ let(:board) { Board.new player }
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
       expect(board).to receive(:hit!)
-      board.register_shot 'C2'
+      board.register_shot 'B3'
     end
 
     it "changes 's' to 'x' when a ship is hit" do
@@ -68,13 +68,13 @@ let(:board) { Board.new player }
       board.stub(:x_randomiser).and_return(4)
       board.place_selector
       expect(board.board_layout[5][4]).to eq 's'
-      board.register_shot 'F5'
+      board.register_shot 'E6'
       expect(board.board_layout[5][4]).to eq 'x'
     end
 
     it "can recognise a double digit x co-ordinate" do
       board.register_shot 'A10'
-      expect(board.board_layout[0][9]).to eq 'o'
+      expect(board.board_layout[9][0]).to eq 'o'
     end
 
     it "turns all 's' values into ' ' values" do
@@ -84,16 +84,16 @@ let(:board) { Board.new player }
     end
 
     it "hits remain intact on the opponent's view" do
-      board.stub(:y_randomiser).and_return(6)
-      board.stub(:x_randomiser).and_return(3)
+      board.stub(:y_randomiser).and_return(3)
+      board.stub(:x_randomiser).and_return(6)
       board.place_selector
       board.register_shot 'G4'
-      expect(board.opponent_view[6][3]).to eq 'x'
+      expect(board.opponent_view[3][6]).to eq 'x'
     end
 
     it "misses remain intact on the opponent's view" do
       board.register_shot 'G4'
-      expect(board.opponent_view[6][3]).to eq 'o'
+      expect(board.opponent_view[3][6]).to eq 'o'
     end
   end
 end

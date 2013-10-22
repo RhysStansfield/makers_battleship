@@ -1,12 +1,18 @@
 class Player
 
+  attr_reader :board
+
   def initialize name
   	@player = name
-  	@board = Board.new name
+  	@board = Board.new self
     give_final_board
   end
 
-  def board_array
+  def name
+    @player
+  end
+
+  def board_layout
     @board.board_layout
   end
 
@@ -15,7 +21,7 @@ class Player
   end
 
   def has_ships_still_floating?
-    board_array.flatten.include?('s')
+    board_layout.flatten.include?('s')
   end
 
   def shoot(at_coordinates, opponent_board)
