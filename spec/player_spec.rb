@@ -2,11 +2,9 @@ require 'player'
 require 'board'
 
 describe Player do
-  it 'cockadoodledo' do
-
-
-
-  end
+  it 'should register a shot on opponent board' do
+		expect(player).to shoot
+	end
 
 it ''
 
