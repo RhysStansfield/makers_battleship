@@ -8,8 +8,9 @@ describe Player do
 
   end
 
+it ''
+
 it 'tells us if the ship is still floating' do
-end
 
 end
 
