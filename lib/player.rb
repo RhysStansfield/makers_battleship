@@ -17,6 +17,7 @@ class Player
   end
 
   def shoot(at_coordinates, opponent_board)
+    opponent_board.register_shot at_coordinates
   end
 
   def has_board?
