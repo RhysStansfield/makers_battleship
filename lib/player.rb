@@ -13,11 +13,11 @@ class Player
   end
 
   def board_layout
-    @board.board_layout
+    board.rows
   end
 
   def give_final_board
-    @board.final_board
+    board.test_board
   end
 
   def has_ships_still_floating?

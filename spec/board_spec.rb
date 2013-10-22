@@ -7,15 +7,15 @@ let(:board) { Board.new player }
 	context 'setting up the game' do
 
 		it 'creates 10 arrays' do
-			expect(board.board_creator.count).to eq 10
+			expect(board.rows.count).to eq 10
 		end
 
     it 'first array contains 10 elements' do
-      expect(board.board_creator.first.count). to eq 10
+      expect(board.rows.first.count). to eq 10
     end
 
     it 'last array contains 10 elements' do
-      expect(board.board_creator.last.count). to eq 10
+      expect(board.rows.last.count). to eq 10
     end
 
     it 'randomises a number' do
@@ -35,51 +35,50 @@ let(:board) { Board.new player }
       board.stub(:y_randomiser).and_return(2)
       board.stub(:x_randomiser).and_return(5)
       board.place_selector
-      expect(board.board_layout[2][5]).to eq 's'
+      expect(board.rows[2][5]).to eq 's'
     end
 
     it "does not insert an 's' permanently into selected place" do
       board.stub(:y_randomiser).and_return(1)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
-      expect(board.board_layout[1][0]).not_to eq 's'
+      expect(board.rows[1][0]).not_to eq 's'
     end
 
     it "board can receive miss" do
-      expect(board).to receive(:miss!)
       board.register_shot 'B2'
+      expect(board.rows[1][1]).to eq 'o'
     end
 
     it "changes ' ' to 'o' if user misses" do
       board.register_shot 'B2'
-      expect(board.board_layout[1][1]).to eq 'o'
+      expect(board.rows[1][1]).to eq 'o'
     end
 
     it "board receives a hit" do
       board.stub(:y_randomiser).and_return(2)
       board.stub(:x_randomiser).and_return(1)
       board.place_selector
-      expect(board).to receive(:hit!)
       board.register_shot 'B3'
+      expect(board.rows[2][1]).to eq 'x'
     end
 
     it "changes 's' to 'x' when a ship is hit" do
       board.stub(:y_randomiser).and_return(5)
       board.stub(:x_randomiser).and_return(4)
       board.place_selector
-      expect(board.board_layout[5][4]).to eq 's'
+      expect(board.rows[5][4]).to eq 's'
       board.register_shot 'E6'
-      expect(board.board_layout[5][4]).to eq 'x'
+      expect(board.rows[5][4]).to eq 'x'
     end
 
     it "can recognise a double digit x co-ordinate" do
       board.register_shot 'A10'
-      expect(board.board_layout[9][0]).to eq 'o'
+      expect(board.rows[9][0]).to eq 'o'
     end
 
     it "turns all 's' values into ' ' values" do
-      board.final_board
-      # expect(board.opponent_view.flatten).to eq Array.new(100,' ')
+      board.test_board
       expect(board.opponent_view.flatten.all?{|n| n==' '}).to be_true
     end
 

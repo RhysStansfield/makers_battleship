@@ -1,24 +1,28 @@
+require './lib/choose_randomly'
+
 class Ship
 
-  # def initialize
-  #   # @board = Array.new(10){Array.new(10){' '}}
-  # end
+  include ChooseRandomly
 
-  # def x_randomiser
-  #   rand(10)
-  # end
+  def initialize size = 3
+    @size = size.to_i
+    @size = 5 if size > 5
+  end
 
-  # def y_randomiser
-  #   rand(10)
-  # end
+  def size
+   @size
+  end
 
+  def choose_initial_position
+   [x_randomiser, y_randomiser]
+  end
 
-  # def initial_position
-  #   x = x_randomiser
-  #   y = y_randomiser
-
-  #   place_selected = @board[y][x]
-  #   place_selected.sub!(' ','s')
-  # end
+  def choose_initial_direction
+    random = choose_randomly * 2
+    return 0 if (0..4).include? random
+    return 1 if (5..9).include? random
+    return 2 if (10..14).include? random
+    return 3 if (15..19).include? random
+  end
 
 end
