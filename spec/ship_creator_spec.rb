@@ -11,7 +11,7 @@ describe ShipCreator do
 
   it 'populates the array with ships' do
     shipcreator.instance_variable_set(:@ships, [ship])
-    expect(shipcreator.ships).to include ship
+    expect(shipcreator.ships).to include(ship)
   end
 
   it 'populates the array with 5 ships' do

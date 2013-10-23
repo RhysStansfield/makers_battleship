@@ -1,14 +1,20 @@
+require_relative 'choose_randomly'
+
 class ShipPlacer
 
-  attr_reader :ships
+  include ChooseRandomly
+
+  attr_reader :ships, :board
 
   def initialize ships, board
     @ships = ships
     @board = board.rows
   end
 
-  def board
-    @board
+  def place_ships ships
+    ships.each do |ship|
+      ship.choose_initial_position
+    end
   end
 
 end

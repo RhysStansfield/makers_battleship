@@ -1,16 +1,14 @@
-require './lib/choose_randomly'
+require_relative 'choose_randomly'
 
 class Ship
 
   include ChooseRandomly
 
+  attr_reader :size
+
   def initialize size = 3
     @size = size.to_i
     @size = 5 if size > 5
-  end
-
-  def size
-   @size
   end
 
   def choose_initial_position

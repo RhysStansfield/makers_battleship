@@ -1,6 +1,6 @@
-require 'choose_randomly'
-require 'shooting'
-require 'utilities'
+require_relative 'choose_randomly'
+require_relative 'shooting'
+require_relative 'utilities'
 
 class Board
 
